@@ -67,7 +67,6 @@ module.exports = {
   */
   pg: {
     client: 'pg',
-    pool: { min: 1, max: 7 },
     connection: Env.get('DATABASE_URL')
     
   }
