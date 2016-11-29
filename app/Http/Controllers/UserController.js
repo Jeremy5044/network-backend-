@@ -7,7 +7,7 @@ const User = use('App/Model/User')
 class UserController {
 
 	* register (request,response){
-      	let data = request.only('username','password','name','company','number','description','img','age','linkedin-url')
+      	let data = request.only('username','password','email','name','company','number','description','img','age','linkedin-url')
       	data.password = yield Hash.make(data.password)
 
       	let user = yield User.create(data)
