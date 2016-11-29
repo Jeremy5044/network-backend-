@@ -21,3 +21,4 @@ Route.on('/').render('welcome')
 
 Route.post('/users', 'UserController.register')
 Route.post('/login', 'UserController.create')
+

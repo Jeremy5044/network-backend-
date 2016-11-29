@@ -1,7 +1,5 @@
 'use strict '
 
-'use strict'
-
 const Hash = use('Hash')
 
 const User = use('App/Model/User')
@@ -9,21 +7,19 @@ const User = use('App/Model/User')
 class UserController {
 
 	* register (request,response){
-      	let data = request.only('email','username','password') 
+      	let data = request.only('username','password','name','company','number','description','img','age','linkedin-url')
       	data.password = yield Hash.make(data.password)
 
       	let user = yield User.create(data)
 
   	    response.status(201).json(user)
 	
-		
-
 	}
 
-	* create(request,response){
+	* login(request, response){
 		let data = request.only('username','password')
-		 let user= yield User.findBy('username',data.username)
-		 console.log(user)	
+		let user= yield User.findBy('username',data.username)
+		console.log(user)	
 
 		 try{
 		 	let verify = yield Hash.verify(data.password,user.password)
@@ -40,8 +36,10 @@ class UserController {
 		   	response.status(401).json({error:"Unidentified user or password"})
 
 		 }
-		
+
 	}
+
+	
 
 }
 
