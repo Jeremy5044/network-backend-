@@ -39,7 +39,11 @@ class UserController {
 
 	}
 
-	
+	* index (request,response){
+		let user_list = yield User.query().table('users')
+
+		response.status(200).json(user_list)
+
 
 }
 
