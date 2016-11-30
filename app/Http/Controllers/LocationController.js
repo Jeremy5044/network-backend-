@@ -7,7 +7,7 @@ class LocationController {
   * post(request, response) {
  let data = request.only('latitude', 'longitude')
  let user = request.authUser
- let loc = yield user.location()
+ let loc = yield user.location(data)
   if (loc){
    loc.fill(data)
     yield loc.save();
