@@ -23,4 +23,11 @@ Route.post('/users', 'UserController.register')
 Route.post('/login', 'UserController.login')
 Route.get('/users/','UserController.index')
 Route.get('/users/:id/','UserController.show')
-// .middleware('auth')
+Route.delete('/user/:id', 'UserController.delete')
+
+Route.post('/location/','LocationController.post').middleware('auth')
+
+
+Route.get('users/id/location','UserController')
+
+

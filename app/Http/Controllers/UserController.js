@@ -52,7 +52,7 @@ class UserController {
 
 	response.json(user)
 }
-
+* delete (request,response)
 }
 
 module.exports = UserController
