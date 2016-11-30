@@ -46,8 +46,10 @@ class UserController {
 	}
 
 * show(request, response){
-	let userId =request.param('id')
-	let user = yield User.findBy(userId, 'id')
+	let userId = request.param('id')
+	console.log(userId)
+	let user = yield User.findBy('id', userId)
+	console.log(user)
 	// let users = yield user.users()
 
 	response.json(user)
