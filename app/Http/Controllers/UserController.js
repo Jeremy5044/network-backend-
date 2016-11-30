@@ -48,8 +48,9 @@ class UserController {
 * show(request, response){
 	let userId =request.param('id')
 	let user = yield User.find(userId)
+	let users = yield user.users()
 
-	response.json(user)
+	response.json(users)
 }
 
 }
