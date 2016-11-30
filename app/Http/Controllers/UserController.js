@@ -45,6 +45,12 @@ class UserController {
 		response.status(200).json(user_list)
 	}
 
+* show(request, response){
+	let userId =request.param('id')
+	let user = yield User.find(userId)
+
+	response.json(user)
+}
 
 }
 
