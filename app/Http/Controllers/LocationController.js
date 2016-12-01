@@ -12,8 +12,8 @@ class LocationController {
       console.log('location is   ', location)
     if (location) {
       console.log('running.')
-      user.location().fill(data) 
-      yield user.location().save()
+      location.fill(data) 
+      yield location.save()
     } else {
       location = yield user.location().create(data)
     }
