@@ -1,4 +1,4 @@
-'use strict '
+'use strict'
 
 const Hash = use('Hash')
 
