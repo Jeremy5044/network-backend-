@@ -7,7 +7,7 @@ class LocationController {
   * post(request, response) {
     let data = request.only('latitude', 'longitude')
     let user = request.authUser
-    let location = yield user.location()
+    let location = yield user.location.fetch()
 
     if (location.length) {
       console.log('location is   ', location)
