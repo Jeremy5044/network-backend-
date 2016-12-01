@@ -9,8 +9,9 @@ class LocationController {
     let user = request.authUser
     let location = yield user.location().fetch()
 
-    if (location.length) {
       console.log('location is   ', location)
+    if (location) {
+      console.log('running.')
       user.location().fill(data) 
       yield user.location().save()
     } else {
