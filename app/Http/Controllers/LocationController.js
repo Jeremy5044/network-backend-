@@ -10,8 +10,8 @@ class LocationController {
     let location = yield user.location()
 
     if (location) {
-      location = yield location.fill(data)
-      location.save()
+      location.fill(data) 
+      yield location.save()
     } else {
       location = yield user.location().create(data)
     }
