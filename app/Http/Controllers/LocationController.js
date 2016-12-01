@@ -10,6 +10,7 @@ class LocationController {
     let location = yield user.location()
 
     if (location) {
+      console.log('location is   ', location)
       location.fill(data) 
       yield location.save()
     } else {
