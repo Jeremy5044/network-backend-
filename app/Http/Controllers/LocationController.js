@@ -9,7 +9,7 @@ class LocationController {
     let user = request.authUser
     let location = yield user.location()
 
-    if (location) {
+    if (location.length) {
       console.log('location is   ', location)
       location.fill(data) 
       yield location.save()
