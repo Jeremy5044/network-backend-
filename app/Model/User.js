@@ -14,7 +14,9 @@ class User extends Lucid {
 
     return this.hasMany('App/Model/Token')
   }
-
+  
+ location(){
+  return this.hasOne('App/Model/Location')
 
 }
 

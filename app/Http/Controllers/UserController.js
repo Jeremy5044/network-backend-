@@ -65,6 +65,7 @@ class UserController {
   response.status(202).json({ User: "Page Deleted!" })
 
 }
+
 }
 
 module.exports = UserController
