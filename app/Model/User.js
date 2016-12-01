@@ -19,5 +19,6 @@ class User extends Lucid {
   return this.hasOne('App/Model/Location')
 
 }
-
+}
 module.exports = User
+
