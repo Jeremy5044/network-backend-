@@ -26,6 +26,7 @@ Route.get('/users/:id/','UserController.show')
 Route.delete('/user/:id', 'UserController.delete')
 
 Route.post('/location/','LocationController.post').middleware('auth')
+Route.post('/location/:id','LocationController.update').middleware('auth')
 
 
 Route.get('users/id/location','UserController')

@@ -53,7 +53,17 @@ class UserController {
 	response.json(user)
 }
 * delete (request,response){
-	
+ let userId = request.param('id')
+  let user = yield User.findBy('id',userId)
+  if(user) {
+  	let deleteuser = yield User.query().where('id',userId).del()
+
+
+  }
+
+
+  response.status(202).json({ User: "Page Deleted!" })
+
 }
 }
 
