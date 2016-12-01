@@ -11,8 +11,8 @@ class LocationController {
 
     if (location.length) {
       console.log('location is   ', location)
-      location.fill(data) 
-      yield location.save()
+      user.location().fill(data) 
+      yield user.location().save()
     } else {
       location = yield user.location().create(data)
     }
