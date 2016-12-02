@@ -1,6 +1,7 @@
 'use strict'
 const User = use('App/Model/User')
 const Location = use('App/Model/Location')
+const Database = use('Database')
 
 class LocationController {
 
