@@ -58,11 +58,11 @@ class LocationController {
     let nearbyUsers = yield User.query().whereIn('id', nearbyQuery.rows.map(loc => loc.user_id)).fetch()
 
     console.log(nearbyUsers)
-    
+
     let result = nearbyUsers.map(function (user) {
       let location = nearbyQuery.rows.find(loc => loc.user_id === user.id)
       user.location = location
-    })
+    }).value()
 
     console.log(result)
 
