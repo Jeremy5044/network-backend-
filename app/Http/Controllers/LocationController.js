@@ -60,7 +60,7 @@ class LocationController {
 
     // let nearby = yield Database.select('*', distanceQuery).from('locations').whereRaw('userDistance < ?', [10])
 
-    response.status(200).json(nearby)
+    response.status(200).json(nearbyQuery)
 
    }
 
