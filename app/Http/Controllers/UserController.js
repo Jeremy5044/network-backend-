@@ -78,6 +78,10 @@ class UserController {
 	}
  }
 
+ * nearby (request, response) {
+ 	
+ }
+
 }
 
 module.exports = UserController
