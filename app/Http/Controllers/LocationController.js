@@ -7,7 +7,7 @@ class LocationController {
   * post(request, response) {
     let data = request.only('lat', 'long')
     let user = request.authUser
-    let location = yield Location.findBy('user_id', user.id).fetch()
+    let location = yield Location.findBy('user_id', user.id)
 
     if (location) {
       location.fill(data) 
