@@ -1,4 +1,5 @@
 'use strict'
+
 const User = use('App/Model/User')
 const Location = use('App/Model/Location')
 const Database = use('Database')
@@ -54,13 +55,20 @@ class LocationController {
       WHERE ${distanceQuery} < 10 AND user_id <> ${user.id} ORDER BY userDistance`);
     console.log(nearbyQuery);
 
+    let nearbyUsers = yield User.whereIn('id', nearbyQuery.rows.map(loc => loc.user_id))
+
+    let result = nearbyUsers.map(function (user) {
+      let location = nearbyQuery.rows.find(loc => loc.user_id === user.id)
+      user.location = location
+    })
+
     // let nearby = yield Location.query()
     //   .select(distanceQuery).as('userDistance')
     //   .where('userDistance < 10').order('userDistance')
 
     // let nearby = yield Database.select('*', distanceQuery).from('locations').whereRaw('userDistance < ?', [10])
 
-    response.status(200).json(nearbyQuery)
+    response.status(200).json(result)
 
    }
 
