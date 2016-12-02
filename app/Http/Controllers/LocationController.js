@@ -43,6 +43,20 @@ class LocationController {
     response.status(200).json(loc)
   }
 
+  * nearby (request, response) {
+    let user = request.authUser
+    // let distance = request.only('distance')
+    let myLoc = yield user.location()
+    let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(lon, lat)::point`
+
+    let nearby = yield Location.query()
+      .select(distanceQuery).as('userDistance')
+      .where('userDistance < 10').order('userDistance').fetch()
+
+    response.status(200).json(nearby)
+
+   }
+
 }
 
 module.exports = LocationController
