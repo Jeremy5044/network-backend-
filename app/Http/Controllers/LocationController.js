@@ -59,8 +59,7 @@ class LocationController {
 
     let result = nearbyUsers.map(function (user) {
       let location = nearbyQuery.rows.find(loc => loc.user_id === user.id)
-      user.location = location
-      return user
+      return { user: user, location: location }
     }).value()
 
     console.log(result)
