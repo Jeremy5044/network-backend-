@@ -47,14 +47,15 @@ class LocationController {
     let user = request.authUser
     // let distance = request.only('distance')
     let myLoc = yield user.location()
-    let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(lon, lat)::point`
+    let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(lon, lat)::point AS userDistance`
 
     console.log(Location)
-    console.log(Location.query())
 
-    let nearby = yield Location.query()
-      .select(distanceQuery).as('userDistance')
-      .where('userDistance < 10').order('userDistance')
+    // let nearby = yield Location.query()
+    //   .select(distanceQuery).as('userDistance')
+    //   .where('userDistance < 10').order('userDistance')
+
+    let nearby = yield Database.select('*', distanceQuery).from('locations').whereRaw('userDistance < ?', [10])
 
     response.status(200).json(nearby)
 
