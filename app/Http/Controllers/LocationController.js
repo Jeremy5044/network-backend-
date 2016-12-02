@@ -48,7 +48,7 @@ class LocationController {
     let user = request.authUser
     // let distance = request.only('distance')
     let myLoc = yield Location.findBy('user_id', user.id)
-    let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(lon, lat)::point AS userDistance`
+    let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(long, lat)::point AS userDistance`
 
     let nearbyQuery = yield Database.raw(`SELECT *, ${distanceQuery} FROM locations
       WHERE userDistance < 10 ORDER BY userDistance`);
