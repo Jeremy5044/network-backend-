@@ -5,13 +5,11 @@ const Location = use('App/Model/Location')
 class LocationController {
 
   * post(request, response) {
-    let data = request.only('latitude', 'longitude')
+    let data = request.only('lat', 'long')
     let user = request.authUser
-    let location = yield user.location().fetch()
+    let location = yield Location.findBy('user_id', user.id).fetch()
 
-      console.log('location is   ', location)
     if (location) {
-      console.log('running.')
       location.fill(data) 
       yield location.save()
     } else {
