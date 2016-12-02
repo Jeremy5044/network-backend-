@@ -49,9 +49,12 @@ class LocationController {
     let myLoc = yield user.location()
     let distanceQuery = `point(${myLoc.long}, ${myLoc.lat}) <@> point(lon, lat)::point`
 
+    console.log(Location)
+    console.log(Location.query())
+
     let nearby = yield Location.query()
       .select(distanceQuery).as('userDistance')
-      .where('userDistance < 10').order('userDistance').fetch()
+      .where('userDistance < 10').order('userDistance')
 
     response.status(200).json(nearby)
 
