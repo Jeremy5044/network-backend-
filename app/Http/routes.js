@@ -22,9 +22,10 @@ Route.on('/').render('welcome')
 Route.post('/users', 'UserController.register')
 Route.post('/login', 'UserController.login')
 Route.get('/users/','UserController.index')
-Route.get('/users/:id/','UserController.show')
-Route.get('/users/location','UserController').middleware('auth')
+Route.get('/users/:id/','UserController.show').middleware('auth')
+Route.get('/users/location','UserController.all').middleware('auth')
 Route.delete('/user/:id', 'UserController.delete')
+Route.get('/users/nearby', 'UserController.nearby').middleware('auth')
 
 
 Route.post('/location','LocationController.post').middleware('auth')

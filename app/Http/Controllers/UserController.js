@@ -58,13 +58,25 @@ class UserController {
   if(user) {
   	let deleteuser = yield User.query().where('id',userId).del()
 
+ response.status(202).json({ User: "Page Deleted!" })
 
-  }
+  }else{
 
 
-  response.status(202).json({ User: "Page Deleted!" })
+  response.status(401).json({ User: "not working" })
 
 }
+}
+
+* all(request,response){
+	let locations = yield User.query().with('location').fetch()
+	let user = request.authUser 
+	if (user){
+		response.status(201).json(location)
+	}else{
+		response.status(401).json({User:Error})
+	}
+ }
 
 }
 
