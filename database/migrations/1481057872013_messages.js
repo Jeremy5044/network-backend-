@@ -8,8 +8,8 @@ class MessagesTableSchema extends Schema {
     this.create('messages', (table) => {
       table.increments()
       table.timestamps()
-      table.interger('sender_id')
-      table.interger('recipient_id')
+      table.integer('sender_id')
+      table.integer('recipient_id')
       table.text('content')
     })
   }
