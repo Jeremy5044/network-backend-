@@ -7,7 +7,6 @@ class Location extends Lucid {
     return this.belongsTo(User)
   }
  
-
-}
+ }
 
 module.exports = Location
