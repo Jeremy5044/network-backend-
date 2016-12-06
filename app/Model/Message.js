@@ -5,7 +5,8 @@ const Lucid = use('Lucid')
 
 class Message extends Lucid {
 	user () {
-    return this.belongsTo(User)
+     return this.belongsTo(User)
+    }
 }
 
 module.exports = Message
