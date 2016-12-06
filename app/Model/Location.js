@@ -11,3 +11,4 @@ class Location extends Lucid {
 }
 
 module.exports = Location
+// s
