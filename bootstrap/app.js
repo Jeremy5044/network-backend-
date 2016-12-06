@@ -28,7 +28,9 @@ const providers = [
   'adonis-lucid/providers/LucidProvider',
   'adonis-lucid/providers/FactoryProvider',
   'adonis-middleware/providers/AppMiddlewareProvider',
-  'adonis-auth/providers/AuthManagerProvider'
+  'adonis-auth/providers/AuthManagerProvider',
+  'adonis-ally/providers/AllyProvider'
+
 ]
 
 /*

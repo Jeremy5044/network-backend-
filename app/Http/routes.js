@@ -22,15 +22,18 @@ Route.on('/').render('welcome')
 Route.post('/users', 'UserController.register')
 Route.post('/login', 'UserController.login')
 Route.get('/users/','UserController.index')
-Route.get('/nearby', 'LocationController.nearby').middleware('auth')
 Route.get('/users/:id','UserController.show')
 Route.get('/users/location','UserController.all').middleware('auth')
 Route.delete('/user/:id', 'UserController.delete')
 
 
 Route.post('/location','LocationController.post').middleware('auth')
+Route.get('/nearby', 'LocationController.nearby').middleware('auth')
 Route.get('/users/:id/location','LocationController.grab')
 
+
+Route.get('linkedin/login','LoginController.redirect')
+Route.get('linkedin/authenticated','LoginController.callback')
 
 
 
