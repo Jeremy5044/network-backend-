@@ -17,8 +17,9 @@ class MessageController {
 	}
 
 	* post (request, response){
-		let data = request.only('recipient_id','content','sender_id')
+		let data = request.only('recipient_id','content')
 		let user = request.authUser
+		data.sender_id = user.id
 		let message = yield Message.create(data)
 
 
