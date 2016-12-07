@@ -6,10 +6,13 @@ const Database = use('Database')
 class MessageController {
 	* index (request, response){
 		 let user = request.authUser
-		 let sentTo = yield Message.where('sender_id', user.id).distinct('recipient_id')
-		 let sentFrom = yield Message.whereNot('sender_id', user.id).where('recipient_id', user.id).distinct('sender_id')
+		 let sentTo = yield Database.from('messages').where('sender_id', user.id).distinct('recipient_id').pluck('recipient_id')
+		 let sentFrom = yield Database.from('messages').where('recipient_id', user.id).distinct('sender_id').pluck('sender_id')
 
-		 response.status(200).json({ to: sentTo, from: sentFrom })
+		 let user_ids = sentTo + sentFrom
+		 let users = yield Database.from('users').whereIn('id', user_ids)
+
+		 response.status(200).json({ users: users })
 
 
 
