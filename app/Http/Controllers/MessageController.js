@@ -10,6 +10,7 @@ class MessageController {
 		 let sentFrom = yield Database.from('messages').where('recipient_id', user.id).distinct('sender_id').pluck('sender_id')
 
 		 let user_ids = sentTo + sentFrom
+		 console.log('ids : ', user_ids)
 		 let users = yield Database.from('users').whereIn('id', user_ids)
 
 		 response.status(200).json({ users: users })
