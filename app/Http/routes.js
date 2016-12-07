@@ -32,8 +32,8 @@ Route.get('/nearby', 'LocationController.nearby').middleware('auth')
 Route.get('/users/:id/location','LocationController.grab')
 
 
-// Route.get('/linkedin/login','LoginController.redirect')
-// Route.get('/linkedin/authenticated','LoginController.callback')
+Route.get('/linkedin/login','LoginController.redirect')
+Route.get('/linkedin/authenticated','LoginController.callback')
 
 Route.get('/threads','MessageController.index').middleware('auth')
 Route.get('/messages/:friend_id','MessageController.show').middleware('auth')
