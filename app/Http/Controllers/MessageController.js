@@ -6,7 +6,7 @@ const Database = use('Database')
 class MessageController {
 	* index (request, response){
 		 let user = request.authUser
-		 let userIds = yield Database.select('users.id', 'users.username', 'users.name').from('users').
+		 let userIds = yield Database.select('users.id', 'users.username', 'users.name').from('users')
 		 	.innerJoin('messages','messages.recipient_id','users.id')
 		 	.distinct('messages.recipient_id').where('messages.sender_id',user.id)
 		 response.status(200).json(userIds)
