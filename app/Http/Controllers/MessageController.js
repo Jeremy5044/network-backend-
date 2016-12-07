@@ -28,8 +28,10 @@ class MessageController {
     * show (request, response){
     	let friend_id = request.param('friend_id')
     	let user = request.authUser
-    	let message = yield Message.query().whereRaw("sender_id = ? AND recipient_id = ? OR sender_id = ? AND recipient_id = ?",
-    		[user.id, friend_id, friend_id, user.id]).orderBy('created_at','desc').fetch()
+    	let message = yield Message.query()
+    		.where("recipient_id", friend_id)
+    	// let message = yield Message.query().whereRaw("sender_id = ? AND recipient_id = ? OR sender_id = ? AND recipient_id = ?",
+    	// 	[user.id, friend_id, friend_id, user.id]).orderBy('created_at','desc').fetch()
 
     	response.status(200).json(message)
 
