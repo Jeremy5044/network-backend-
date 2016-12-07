@@ -9,7 +9,7 @@ class MessageController {
 		 let sentTo = yield Database.from('messages').where('sender_id', user.id).distinct('recipient_id').pluck('recipient_id')
 		 let sentFrom = yield Database.from('messages').where('recipient_id', user.id).distinct('sender_id').pluck('sender_id')
 
-		 let user_ids = sentTo + sentFrom
+		 let user_ids = sentTo.concat(sentFrom)
 		 console.log('ids : ', user_ids)
 		 console.log('sentTo : ', sentTo)
 		 console.log('sentFrom: ', sentFrom)
