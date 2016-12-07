@@ -26,10 +26,13 @@ class MessageController {
 		let data = request.only('recipient_id','content')
 		let user = request.authUser
 		data.sender_id = user.id
-		let message = yield Message.create(data)
 
-
-	  	response.status(200).json(message)
+		if (data.sender_id === data.recipient_id) {
+			response.status(422).json({ error: "Can't have same sender and reciever" })
+		} else {
+			let message = yield Message.create(data)
+		  	response.status(200).json(message)
+		}
 	
 	    
 
