@@ -11,6 +11,8 @@ class MessageController {
 
 		 let user_ids = sentTo + sentFrom
 		 console.log('ids : ', user_ids)
+		 console.log('sentTo : ', sentTo)
+		 console.log('sentFrom: ', sentFrom)
 		 let users = yield Database.from('users').whereIn('id', user_ids)
 
 		 response.status(200).json({ users: users })
