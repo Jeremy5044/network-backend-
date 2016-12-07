@@ -6,11 +6,10 @@ const Database = use('Database')
 class MessageController {
 	* index (request, response){
 		 let user = request.authUser
-		 let userIds = yield Database.select('users.id', 'users.username', 'users.name','users.img').from('users')
-		 	.innerJoin('messages','messages.recipient_id','users.id')
-		 	.where('messages.sender_id = ? OR messages.recipient_id = ?', [user.id, user.id])
-		 	.whereNot('users.id', user.id).distinct('users.id')
-		 response.status(200).json(userIds)
+		 let sentTo = yield Message.where('sender_id', user.id).distinct('recipient_id')
+		 let sentFrom = yield Message.whereNot('sender_id', user.id).where('recipient_id', user.id).distinct('sender_id')
+
+		 response.status(200).json({ to: sentTo, from: sentFrom })
 
 
 
