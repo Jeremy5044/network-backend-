@@ -8,7 +8,7 @@ const Location = use('App/Model/Location')
 class UserController {
 
 	* register (request,response){
-      	let data = request.only('username','password','email','name','company','number','description','img','age','linkedin-url')
+      	let data = request.only('username','password','email','name','company','number','description','img','age','linkedin','intrest')
       	data.password = yield Hash.make(data.password)
 
       	let user = yield User.create(data)
